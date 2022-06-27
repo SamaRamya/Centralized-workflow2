@@ -1,0 +1,20 @@
+name: Caller Workflow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+     
+jobs:
+  job1:
+     if : ${{ inputs.dockerimage == "stellantis-harbor/java8-gradle7-node16/v1.0/" }}
+     uses: SamaRamya/Centralized-workflow1/.github/workflows/gradle.yml@main
+     
+  job2:
+     if : ${{ inputs.dockerimage == "stellantis-harbor/openjdk11-mvn/v3.5.3/"}}
+     uses: SamaRamya/Centralized-workflow1/.github/workflows/maven.yml@main
+     
+  job3:
+     if : ${{ inputs.dockerimage == "stellantis-harbor/openjdk11-node12/v1.0/"}}
+     uses: SamaRamya/Centralized-workflow1/.github/workflows/nodejs.yml@main
+     
